@@ -109,4 +109,8 @@ class Google_docs_integration(models.Model):
 			'type'     : 'ir.actions.act_url',
 			'target'   : 'current',	
 			'url'		: self.doc_link,
-		}	
+		}
+class task_extension(models.Model):
+	_inherit = 'project.task'
+
+	doc = fields.Many2one('google.inte',string='Document')
