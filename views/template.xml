@@ -1,0 +1,52 @@
+<?xml version="1.0"?> 
+<openerp> 
+    <data>
+        <record id="GD_docs" model="ir.ui.view"> 
+            <field name="name">Google Docs Integration</field> 
+            <field name="model">google.inte</field>
+            <field name="type">form</field> 
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="create_doc" string="Create Google Document" type="object" class="oe_highlight" attrs="{'invisible':[('hide_button', '=',True)]}"/>
+
+                        <button name="open_doc" string="Open Google Document" type="object" class="oe_highlight" attrs="{'invisible':[('hide_button', '=',False)]}"/>
+                    </header>
+
+                    <sheet>
+                        <h3>Document Details </h3>
+                        <br></br>
+                        <group name="top">
+                            <field name="doc_name" attrs="{'readonly':[('hide_button', '=',True)]}"/>
+                            <field name="doc_type" attrs="{'readonly':[('hide_button', '=',True)]}"/>
+                            <field name="proj" />
+                            <field name="doc_link" widget="url" invisible="1"/>
+                            <field name="hide_button" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.sequence.type" id="doc_ref_seq_type"> 
+            <field name="name">doc_ref_seq</field> 
+            <field name="code">doc.ref.seq</field> 
+        </record>
+
+        <record id="doc_ref_seq" model="ir.sequence"> 
+            <field name="name">doc_ref_seq</field> 
+            <field name="code">doc.ref.seq</field> 
+            <field name="prefix">/</field> 
+            <field name="padding"> 4</field> 
+        </record>
+
+        <record model="ir.actions.act_window" id="google_docs">
+            <field name="name">Google Docs</field>
+            <field name="res_model">google.inte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Google Docs" id="google_docs_id" parent="project.menu_project_management" sequence="5" action="google_docs"/>
+    </data>
+</openerp> 
