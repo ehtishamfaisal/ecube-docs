@@ -47,6 +47,21 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+
+        <record id="project_task_extension" model="ir.ui.view"> 
+            <field name="name">project_task_extension</field> 
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="type">form</field> 
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name ='progress']" position="after">
+                    <field name="doc" domain="[('project_id','=',proj)]"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+
         <menuitem name="Google Docs" id="google_docs_id" parent="project.menu_project_management" sequence="5" action="google_docs"/>
     </data>
 </openerp> 
