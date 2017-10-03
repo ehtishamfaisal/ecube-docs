@@ -69,11 +69,12 @@ class Google_docs_integration(models.Model):
 			    'mimeType': config.urls['mimeType']+'document'
 			}
 
-		filee = drive_service.files().create(body=file_metadata,
-			                                    fields='id').execute()
-		self.File_ID = filee.get('id')
-		self.changePermissions()
-		return self.open_doc()
+		if not(self.doc_link):
+			filee = drive_service.files().create(body=file_metadata,
+				                                    fields='id').execute()
+			self.File_ID = filee.get('id')
+			self.changePermissions()
+			return self.open_doc()
 
 	def changePermissions(self):
 
