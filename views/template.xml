@@ -55,7 +55,7 @@
             <field name="type">form</field> 
             <field name="arch" type="xml">
                 <xpath expr="//field[@name ='progress']" position="after">
-                    <field name="doc" domain="[('project_id','=',proj)]"/>
+                    <field name="doc" domain="[('proj','=',project_id)]"/>
                 </xpath>
                 
             </field>

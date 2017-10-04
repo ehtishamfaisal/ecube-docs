@@ -110,6 +110,17 @@ class Google_docs_integration(models.Model):
 			'target'   : 'current',	
 			'url'		: self.doc_link,
 		}
+
+	@api.multi
+	def unlink(self):
+		drive_service = self.create_drive_link()
+		for rec in self:
+			if rec.doc_link:
+				File_ID = rec.doc_link.split('/')[-2]
+				del_file = drive_service.files().delete(fileId = File_ID).execute()
+		re =super(Google_docs_integration, self).unlink()
+		return re
+		
 class task_extension(models.Model):
 	_inherit = 'project.task'
 
