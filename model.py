@@ -33,7 +33,7 @@ class Google_docs_integration(models.Model):
 	def create(self, vals):
 		seq = self.env['ir.sequence'].next_by_code('doc.ref.seq')
 		customer = self.env['res.users'].search([('id','=',self._uid)])
-		vals['doc_ref'] = vals['doc_type'] +' /'+  customer.name + seq
+		vals['doc_ref'] = vals['doc_name'] +' /'+  customer.name + seq
 		new_record = super(Google_docs_integration, self).create(vals) 
 		return new_record
 	
@@ -85,8 +85,7 @@ class Google_docs_integration(models.Model):
 	    'role': 'writer'
 		    }
 		try:
-		    drive_service.permissions().create(
-		        fileId=self.File_ID,
+		    drive_service.permissions().create(fileId=self.File_ID,
 		        body=new_permission,).execute()
 		except errors.HttpError, error:
 		    print ('An error occurred: %s' % error)

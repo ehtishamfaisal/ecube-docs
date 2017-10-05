@@ -33,21 +33,6 @@
             <field name="code">doc.ref.seq</field> 
         </record>
 
-        <record id="doc_ref_seq" model="ir.sequence"> 
-            <field name="name">doc_ref_seq</field> 
-            <field name="code">doc.ref.seq</field> 
-            <field name="prefix">/</field> 
-            <field name="padding"> 4</field> 
-        </record>
-
-        <record model="ir.actions.act_window" id="google_docs">
-            <field name="name">Google Docs</field>
-            <field name="res_model">google.inte</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-
-
         <record id="project_task_extension" model="ir.ui.view"> 
             <field name="name">project_task_extension</field> 
             <field name="model">project.task</field>
@@ -61,6 +46,32 @@
             </field>
         </record>
 
+        <record id="doc_ref_seq" model="ir.sequence"> 
+            <field name="name">doc_ref_seq</field> 
+            <field name="code">doc.ref.seq</field> 
+            <field name="prefix">/</field> 
+            <field name="padding"> 4</field> 
+        </record>
+        
+        <record model="ir.actions.act_window" id="google_docs">
+            <field name="name">Google Docs</field>
+            <field name="res_model">google.inte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="google_docs_main_tree" model="ir.ui.view"> 
+            <field name="name">Google Docs</field> 
+            <field name="model">google.inte</field> 
+            <field name="arch" type="xml"> 
+                <tree > 
+                    <field name="doc_name"/> 
+                    <field name="proj"/>
+                    <field name="doc_type"/> 
+                    <field name="create_uid"/> 
+                </tree> 
+            </field> 
+        </record>
 
         <menuitem name="Google Docs" id="google_docs_id" parent="project.menu_project_management" sequence="5" action="google_docs"/>
     </data>

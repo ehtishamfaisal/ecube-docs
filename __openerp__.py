@@ -6,5 +6,5 @@
 	'author': 'Muhammad Awais',
 	'depends':['project'], 
 	'application': True,
-	'data': ['views/template.xml'],
+	'data': ['views/template.xml','seurity/seurity.xml','seurity/ir.model.access.csv'],
 }
